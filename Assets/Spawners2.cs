@@ -52,7 +52,11 @@ public class Spawners2 : MonoBehaviour
                 if (level >= 8) { enem.GetComponent<Monkey>().setlive(200f); enem.GetComponent<Gameplay.ShipSystems.WeaponSystem>().setRocketOrBeam(); }
                 else if (level >= 16) { enem.GetComponent<Monkey>().setlive(300f); enem.GetComponent<Gameplay.ShipSystems.WeaponSystem>().setBeam(); }
                 else if (level >= 21) { enem.GetComponent<Monkey>().setlive(400f); enem.GetComponent<Gameplay.ShipSystems.WeaponSystem>().setBeam(); }
-                else { enem.GetComponent<Monkey>().setlive(1f); }
+                else {
+                    int prand = Random.Range(0, 2);
+                    if (prand == 0) { enem.GetComponent<Monkey>().setlive(200f); }
+                    else { enem.GetComponent<Monkey>().setlive(1f); } 
+                }
             }
             else { level = 0; }
             enem.GetComponent<Monkey>().GetSpawner = this;

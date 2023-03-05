@@ -96,8 +96,8 @@ public class Monkey : MonoBehaviour
     void Update()
     {
         transform.Translate(new Vector3(0.08f * pos2, pos1*0.03f, 0));
-        if (transform.position.x > limitx) { amount1 = -amount1; transform.position = new Vector3(limitx, transform.position.y, transform.position.z); }
-        if (transform.position.x < limitx1) { amount1 = -amount1; transform.position = new Vector3(limitx1, transform.position.y, transform.position.z); }
+        if (transform.position.x > limitx) { amount1 = -amount1; transform.position = new Vector3(limitx1, transform.position.y, transform.position.z); }
+        if (transform.position.x < limitx1) { amount1 = -amount1; transform.position = new Vector3(limitx, transform.position.y, transform.position.z); }
         if (transform.position.y > limity) { transform.position = new Vector3(transform.position.x, limity, transform.position.z); }
         if (transform.position.y < limity1) { transform.position = new Vector3(transform.position.x, limity1, transform.position.z); }
         if (transform.position.y > -0.1f)
@@ -111,13 +111,19 @@ public class Monkey : MonoBehaviour
 
     internal void setlive(float v)
     {
-        _lives = v;print(_lives);
+        _lives = v;
+        //print(_lives);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "arrow")
+        if (collision.gameObject.tag == "arrow"&&_lives==1)
         {
             Destroy(gameObject);
+        }
+        else if(collision.gameObject.tag == "arrow")
+        {
+            _lives = _lives - 100;
+            if (_lives <= 0) { Destroy(gameObject); }
         }
     }
 }
