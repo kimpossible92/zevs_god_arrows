@@ -5,6 +5,27 @@ TagManager:
   serializedVersion: 2
   tags:
   - arrow
+  - enemy
+  - bonus
+  - w
+  - spawnman
+  - rub
+  - server
+  - bullet
+  - yad
+  - corm
+  - wirm
+  - road
+  - razor
+  - Cube
+  - enem
+  - Destryable
+  - powerup
+  - Wall
+  - Bomb
+  - Explosion
+  - Breakable
+  - fire
   layers:
   - Default
   - TransparentFX

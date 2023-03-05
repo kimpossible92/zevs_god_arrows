@@ -111,7 +111,7 @@ public class Monkey : MonoBehaviour
 
     internal void setlive(float v)
     {
-        _lives = v;
+        _lives = v;print(_lives);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
