@@ -21,6 +21,7 @@ public class fireAttacker : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         _readyToFire = true;
     }
+    public int GetScore => score;
     int score = 0;
     [SerializeField]UnityEngine.UI.Text GetText;
     public void SetScore(int sc)

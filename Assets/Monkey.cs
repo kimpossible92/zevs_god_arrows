@@ -95,7 +95,7 @@ public class Monkey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(0.08f * pos2, pos1*0.03f, 0));
+        transform.Translate(new Vector3(0.018f * pos2, pos1*0.03f, 0));
         if (transform.position.x > limitx) { amount1 = -amount1; transform.position = new Vector3(limitx1, transform.position.y, transform.position.z); }
         if (transform.position.x < limitx1) { amount1 = -amount1; transform.position = new Vector3(limitx, transform.position.y, transform.position.z); }
         if (transform.position.y > limity) { transform.position = new Vector3(transform.position.x, limity, transform.position.z); }

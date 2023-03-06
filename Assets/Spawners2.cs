@@ -46,6 +46,7 @@ public class Spawners2 : MonoBehaviour
         while (true)
         {
             var enem = Instantiate(_object, transform.position, transform.rotation, _parent);
+            enem.GetComponent<Animator>().SetBool("level2", false);
             if (23 >= level)
             {
                 //enem.transform.Find("Hull").GetComponent<SpriteRenderer>().sprite = Objects[level];
@@ -53,8 +54,9 @@ public class Spawners2 : MonoBehaviour
                 else if (level >= 16) { enem.GetComponent<Monkey>().setlive(300f); enem.GetComponent<Gameplay.ShipSystems.WeaponSystem>().setBeam(); }
                 else if (level >= 21) { enem.GetComponent<Monkey>().setlive(400f); enem.GetComponent<Gameplay.ShipSystems.WeaponSystem>().setBeam(); }
                 else {
-                    int prand = Random.Range(0, 2);
+                    int prand = Random.Range(0, 3);
                     if (prand == 0) { enem.GetComponent<SpriteRenderer>().color = Color.gray; enem.GetComponent<Monkey>().setlive(200f); }
+                    else if (prand == 0&&FindObjectOfType<fireAttacker>().GetScore>300) { enem.GetComponent<Animator>().SetBool("level2", true); ; enem.GetComponent<SpriteRenderer>().color = Color.gray; enem.GetComponent<Monkey>().setlive(300f); }
                     else { enem.GetComponent<Monkey>().setlive(1f); } 
                 }
             }
