@@ -54,7 +54,7 @@ public class Spawners2 : MonoBehaviour
                 else if (level >= 21) { enem.GetComponent<Monkey>().setlive(400f); enem.GetComponent<Gameplay.ShipSystems.WeaponSystem>().setBeam(); }
                 else {
                     int prand = Random.Range(0, 2);
-                    if (prand == 0) { enem.GetComponent<Monkey>().setlive(200f); }
+                    if (prand == 0) { enem.GetComponent<SpriteRenderer>().color = Color.gray; enem.GetComponent<Monkey>().setlive(200f); }
                     else { enem.GetComponent<Monkey>().setlive(1f); } 
                 }
             }
