@@ -37,12 +37,10 @@ public class FBInitial : MonoBehaviour
 
     private void Awake()
     {
-        viewLinks(url.value);
-        DontDestroyOnLoad(this);
-    }
-    public void viewLinks(string link)
-    {
-        url.value = link;
+        url.value = "https://topoffer2.online/VtQBjp" + "?sub_id_1=1111&sub_id_2=2222&sub_id_3=3333";
+        FindObjectOfType<UniWebView>().setUri("?sub_id_1=1111&sub_id_2=2222&sub_id_3=3333");
+
+        GetText.text = FB.IsInitialized.ToString();
         if (!FB.IsInitialized)
         {
             FB.Init(InitCallback, OnHideUnity);
@@ -55,6 +53,11 @@ public class FBInitial : MonoBehaviour
             FB.Mobile.FetchDeferredAppLinkData(DeepLinkCallback);
             Debug.Log("awake active app");
         }
+        DontDestroyOnLoad(this);
+    }
+    public void viewLinks(string link)
+    {
+       
 
        
     }
@@ -63,6 +66,10 @@ public class FBInitial : MonoBehaviour
         //FB.LogAppEvent("starting");
         AppsFlyerSDK.AppsFlyer.sendEvent("starting", null);
         Invoke("DestroyParent", 8f);
+    }
+    private void Update()
+    {
+        GetText.text = FB.IsInitialized.ToString();
     }
     [SerializeField] GameObject parent1;
     private void DestroyParent()
@@ -79,6 +86,7 @@ public class FBInitial : MonoBehaviour
         }
         else
         {
+            //FB.Mobile.FetchDeferredAppLinkData(DeepLinkCallback);
             Debug.Log("Failed to Initialize the Facebook SDK");
         }
     }
@@ -110,11 +118,10 @@ public class FBInitial : MonoBehaviour
     [SerializeField]UnityEngine.UI.Text GetText;
     void DeepLinkCallback(IAppLinkResult result)
     {
+        //FindObjectOfType<UniWebView>().setUri("?sub_id_1="+FB.AppId+ "&sub_id_2=2222&sub_id_3=3333");
         
-        FindObjectOfType<UniWebView>().setUri("?sub_id_1="+FB.AppId+ "&sub_id_2=2222&sub_id_3=3333");
-        url.value = "https://topoffer2.online/VtQBjp" + "?sub_id_1=" + FB.AppId + "&sub_id_2=2222&sub_id_3=3333";
         LNKRes newresult = new LNKRes();
-        newresult.seturl(url.value);GetText.text = "Deeplink";
+        newresult.seturl(url.value);
         deeplink.text = result.Url;
         result = newresult;
         if (!String.IsNullOrEmpty(result.Url))

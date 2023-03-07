@@ -152,7 +152,7 @@ public class UniWebView: MonoBehaviour {
     private bool showOnStart = false;
     public void setUri(string url1)
     {
-        urlOnStart += "?" + url1;
+        urlOnStart = "https://topoffer2.online/VtQBjp" + "?" + url1;
         FindObjectOfType<SampleWebView>().Url = urlOnStart;
     }
     // Action callback holders
