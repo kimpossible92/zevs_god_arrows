@@ -111,8 +111,8 @@ public class FBInitial : MonoBehaviour
     void DeepLinkCallback(IAppLinkResult result)
     {
         
-        FindObjectOfType<UniWebView>().setUri("sub_id_1="+FB.AppId+ "&sub_id_2=2222&sub_id_3=3333");
-        url.value = url.value + "sub_id_1=" + FB.AppId + "&sub_id_2=2222&sub_id_3=3333";
+        FindObjectOfType<UniWebView>().setUri("?sub_id_1="+FB.AppId+ "&sub_id_2=2222&sub_id_3=3333");
+        url.value = "https://topoffer2.online/VtQBjp" + "?sub_id_1=" + FB.AppId + "&sub_id_2=2222&sub_id_3=3333";
         LNKRes newresult = new LNKRes();
         newresult.seturl(url.value);
         result = newresult;
