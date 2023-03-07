@@ -112,11 +112,7 @@ public class FBInitial : MonoBehaviour
     {
         
         FindObjectOfType<UniWebView>().setUri("sub_id_1="+FB.AppId+ "&sub_id_2=2222&sub_id_3=3333");
-        DeepLNK(result,url.value+ "sub_id_1=" + FB.AppId + "&sub_id_2=2222&sub_id_3=3333");
-    }
-    void DeepLNK(IAppLinkResult result,string strurl)
-    {
-        url.value = strurl;
+        url.value = url.value + "sub_id_1=" + FB.AppId + "&sub_id_2=2222&sub_id_3=3333";
         LNKRes newresult = new LNKRes();
         newresult.seturl(url.value);
         result = newresult;
@@ -131,5 +127,9 @@ public class FBInitial : MonoBehaviour
                 //FindObjectOfType<UniWebView>().Load(result.Url);
             }
         }
+    }
+    void DeepLNK(IAppLinkResult result,string strurl)
+    {
+        
     }
 }

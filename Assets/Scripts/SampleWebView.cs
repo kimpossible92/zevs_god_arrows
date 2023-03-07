@@ -33,6 +33,7 @@ public class SampleWebView : MonoBehaviour
     [SerializeField] bool customFile = false;
     IEnumerator Start()
     {
+        DontDestroyOnLoad(this);
         webViewObject = (new GameObject("WebViewObject")).AddComponent<WebViewObject>();
         webViewObject.Init(
             cb: (msg) =>
@@ -202,7 +203,7 @@ public class SampleWebView : MonoBehaviour
     [SerializeField] bool viewGui = false;
     void OnGUI()
     {
-        if (!viewGui) { return; }
+        //if (!viewGui) { return; }
         visibleGui();
     }
     private void visibleGui()
