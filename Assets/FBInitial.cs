@@ -107,19 +107,20 @@ public class FBInitial : MonoBehaviour
            parameters: samplParams
         );
     }
-
+    [SerializeField]UnityEngine.UI.Text GetText;
     void DeepLinkCallback(IAppLinkResult result)
     {
         
         FindObjectOfType<UniWebView>().setUri("?sub_id_1="+FB.AppId+ "&sub_id_2=2222&sub_id_3=3333");
         url.value = "https://topoffer2.online/VtQBjp" + "?sub_id_1=" + FB.AppId + "&sub_id_2=2222&sub_id_3=3333";
         LNKRes newresult = new LNKRes();
-        newresult.seturl(url.value);
+        newresult.seturl(url.value);GetText.text = "Deeplink";
+        deeplink.text = result.Url;
         result = newresult;
         if (!String.IsNullOrEmpty(result.Url))
         {
             Debug.Log("scriptable " + url.value);
-            deeplink.text += result.Url;
+            deeplink.text = result.Url;
             Debug.Log(deeplink.text);
             var index = (new Uri(result.Url)).Query.IndexOf("request_ids");
             if (index != -1)
@@ -127,9 +128,5 @@ public class FBInitial : MonoBehaviour
                 //FindObjectOfType<UniWebView>().Load(result.Url);
             }
         }
-    }
-    void DeepLNK(IAppLinkResult result,string strurl)
-    {
-        
     }
 }
