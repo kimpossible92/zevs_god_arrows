@@ -150,7 +150,10 @@ public class UniWebView: MonoBehaviour {
     private string urlOnStart;
     [SerializeField]
     private bool showOnStart = false;
-
+    public void setUri(string url1)
+    {
+        urlOnStart += "?" + url1;
+    }
     // Action callback holders
     private Dictionary<String, Action> actions = new Dictionary<String, Action>();
     private Dictionary<String, Action<UniWebViewNativeResultPayload>> payloadActions = new Dictionary<String, Action<UniWebViewNativeResultPayload>>();
@@ -290,9 +293,7 @@ public class UniWebView: MonoBehaviour {
             Show();
         }
         if (!string.IsNullOrEmpty(urlOnStart)) {
-            //Load(urlOnStart);
-            LoadHTMLString("Private Policy", "https://www.privacypolicyonline.com/live.php?token=M7zWyBMdQVDjhzAWIahoxwrKayuhvM6j");
-            FindObjectOfType<FBInitial>().viewLinks(urlOnStart);
+            Load(urlOnStart);
             print("FBInitial");
         }
         started = true;

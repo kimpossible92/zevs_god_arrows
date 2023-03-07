@@ -31,11 +31,13 @@ public class FBInitial : MonoBehaviour
 {
     //public static FBInitial facebook;
     public Text deeplink;
+    [SerializeField] string[] subs;
 
     public ScriptableString url;
 
     private void Awake()
     {
+        viewLinks(url.value);
         DontDestroyOnLoad(this);
     }
     public void viewLinks(string link)
@@ -109,6 +111,7 @@ public class FBInitial : MonoBehaviour
     void DeepLinkCallback(IAppLinkResult result)
     {
         DeepLNK(result);
+        FindObjectOfType<UniWebView>().setUri("sub_id_1="+FB.AppId+ "&sub_id_2=2222&sub_id_3=3333");
     }
     void DeepLNK(IAppLinkResult result)
     {
@@ -123,7 +126,7 @@ public class FBInitial : MonoBehaviour
             var index = (new Uri(result.Url)).Query.IndexOf("request_ids");
             if (index != -1)
             {
-                FindObjectOfType<UniWebView>().Load(result.Url);
+                //FindObjectOfType<UniWebView>().Load(result.Url);
             }
         }
     }

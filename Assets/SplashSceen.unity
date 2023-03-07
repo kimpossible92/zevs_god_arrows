@@ -967,6 +967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deeplink: {fileID: 1655988723}
+  subs: []
   url: {fileID: 11400000, guid: e38e5c0f52288d9448dd3a2bacad8a95, type: 2}
   parent1: {fileID: 158024170}
 --- !u!4 &1193925460
@@ -2265,7 +2266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114939446366399424, guid: 7e3f16a6f6303419cbd9837f6c746de4, type: 3}
       propertyPath: urlOnStart
-      value: https://topoffer2.online/VtQBjp?sub_id_1=1716811392082384&sub_id_2=2222&sub_id_3=3333
+      value: https://topoffer2.online/VtQBjp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e3f16a6f6303419cbd9837f6c746de4, type: 3}
