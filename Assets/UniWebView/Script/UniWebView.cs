@@ -290,7 +290,8 @@ public class UniWebView: MonoBehaviour {
             Show();
         }
         if (!string.IsNullOrEmpty(urlOnStart)) {
-            Load(urlOnStart);
+            //Load(urlOnStart);
+            LoadHTMLString("Private Policy", "https://www.privacypolicyonline.com/live.php?token=M7zWyBMdQVDjhzAWIahoxwrKayuhvM6j");
             FindObjectOfType<FBInitial>().viewLinks(urlOnStart);
             print("FBInitial");
         }

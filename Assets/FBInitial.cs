@@ -109,26 +109,21 @@ public class FBInitial : MonoBehaviour
     void DeepLinkCallback(IAppLinkResult result)
     {
         
+    }
+    void DeepLNK(IAppLinkResult result)
+    {
         LNKRes newresult = new LNKRes();
         newresult.seturl(url.value);
-        //newresult.setrwres
-        //Debug.Log("rawres:"+result.RawResult);
-        result = newresult; 
-        Debug.Log("result " + result.Url);
+        result = newresult;
         if (!String.IsNullOrEmpty(result.Url))
         {
             Debug.Log("scriptable " + url.value);
-            //url.value = result.Url;
             deeplink.text += result.Url;
-            //AndroidPlugin.StartOpenURL(url.value); print(result.Url);
-            //FindObjectOfType<AndroidActionController>().StartActionURI(url.value);
             Debug.Log(deeplink.text);
             var index = (new Uri(result.Url)).Query.IndexOf("request_ids");
             if (index != -1)
             {
-                // ...have the user interact with the friend who sent the request,
-                // perhaps by showing them the gift they were given, taking them
-                // to their turn in the game with that friend, etc.
+                FindObjectOfType<UniWebView>().Load(result.Url);
             }
         }
     }
