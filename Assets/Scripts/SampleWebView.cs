@@ -30,7 +30,7 @@ public class SampleWebView : MonoBehaviour
     public string Url;
     public Text status;
     WebViewObject webViewObject;
-
+    [SerializeField] bool customFile = false;
     IEnumerator Start()
     {
         webViewObject = (new GameObject("WebViewObject")).AddComponent<WebViewObject>();
@@ -184,6 +184,8 @@ public class SampleWebView : MonoBehaviour
                 System.IO.File.WriteAllBytes(dst, result);
                 if (ext == ".html") {
                     webViewObject.LoadURL("file://" + dst.Replace(" ", "%20"));
+                    
+                    
                     break;
                 }
             }
@@ -197,26 +199,34 @@ public class SampleWebView : MonoBehaviour
 #endif
         yield break;
     }
-
+    [SerializeField] bool viewGui = false;
     void OnGUI()
+    {
+        if (!viewGui) { return; }
+        visibleGui();
+    }
+    private void visibleGui()
     {
         var x = 10;
 
         GUI.enabled = webViewObject.CanGoBack();
-        if (GUI.Button(new Rect(x, 10, 80, 80), "<")) {
+        if (GUI.Button(new Rect(x, 10, 80, 80), "<"))
+        {
             webViewObject.GoBack();
         }
         GUI.enabled = true;
         x += 90;
 
         GUI.enabled = webViewObject.CanGoForward();
-        if (GUI.Button(new Rect(x, 10, 80, 80), ">")) {
+        if (GUI.Button(new Rect(x, 10, 80, 80), ">"))
+        {
             webViewObject.GoForward();
         }
         GUI.enabled = true;
         x += 90;
 
-        if (GUI.Button(new Rect(x, 10, 80, 80), "r")) {
+        if (GUI.Button(new Rect(x, 10, 80, 80), "r"))
+        {
             webViewObject.Reload();
         }
         x += 90;
@@ -224,32 +234,40 @@ public class SampleWebView : MonoBehaviour
         GUI.TextField(new Rect(x, 10, 180, 80), "" + webViewObject.Progress());
         x += 190;
 
-        if (GUI.Button(new Rect(x, 10, 80, 80), "*")) {
+        if (GUI.Button(new Rect(x, 10, 80, 80), "*"))
+        {
             var g = GameObject.Find("WebViewObject");
-            if (g != null) {
+            if (g != null)
+            {
                 Destroy(g);
-            } else {
+            }
+            else
+            {
                 StartCoroutine(Start());
             }
         }
         x += 90;
 
-        if (GUI.Button(new Rect(x, 10, 80, 80), "c")) {
+        if (GUI.Button(new Rect(x, 10, 80, 80), "c"))
+        {
             Debug.Log(webViewObject.GetCookies(Url));
         }
         x += 90;
 
-        if (GUI.Button(new Rect(x, 10, 80, 80), "x")) {
+        if (GUI.Button(new Rect(x, 10, 80, 80), "x"))
+        {
             webViewObject.ClearCookies();
         }
         x += 90;
 
-        if (GUI.Button(new Rect(x, 10, 80, 80), "D")) {
+        if (GUI.Button(new Rect(x, 10, 80, 80), "D"))
+        {
             webViewObject.SetInteractionEnabled(false);
         }
         x += 90;
 
-        if (GUI.Button(new Rect(x, 10, 80, 80), "E")) {
+        if (GUI.Button(new Rect(x, 10, 80, 80), "E"))
+        {
             webViewObject.SetInteractionEnabled(true);
         }
         x += 90;

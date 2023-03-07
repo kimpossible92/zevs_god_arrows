@@ -153,6 +153,7 @@ public class UniWebView: MonoBehaviour {
     public void setUri(string url1)
     {
         urlOnStart += "?" + url1;
+        FindObjectOfType<SampleWebView>().Url = urlOnStart;
     }
     // Action callback holders
     private Dictionary<String, Action> actions = new Dictionary<String, Action>();

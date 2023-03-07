@@ -264,8 +264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb516f7ac0cee4b0f8345a5a60de3f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Url: sample.html
+  Url: 'https://conversionleadstraffic.info/dv5RmK?sub_id_1=1111&sub_id_2=2222&sub_id_3=3333 '
   status: {fileID: 123026521}
+  customFile: 0
 --- !u!1 &1257165921
 GameObject:
   m_ObjectHideFlags: 0
