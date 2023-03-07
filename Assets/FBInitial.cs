@@ -108,7 +108,7 @@ public class FBInitial : MonoBehaviour
 
     void DeepLinkCallback(IAppLinkResult result)
     {
-        
+        DeepLNK(result);
     }
     void DeepLNK(IAppLinkResult result)
     {
