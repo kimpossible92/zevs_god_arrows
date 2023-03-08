@@ -739,12 +739,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1193925460}
     m_Modifications:
     - target: {fileID: 4405976200006927252, guid: 0bfe3b149145747cc92dc53bb4df4e9b, type: 3}
-      propertyPath: appID
-      value: zevs.ruterber.heavenlyking
+      propertyPath: isDebug
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4405976200006927252, guid: 0bfe3b149145747cc92dc53bb4df4e9b, type: 3}
-      propertyPath: devKey
-      value: 3vypLcjPq4TzkR5qqPsa7o
+      propertyPath: getConversionData
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6207133488976360133, guid: 0bfe3b149145747cc92dc53bb4df4e9b, type: 3}
       propertyPath: m_RootOrder

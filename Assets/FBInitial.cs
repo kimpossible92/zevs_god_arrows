@@ -37,8 +37,8 @@ public class FBInitial : MonoBehaviour
 
     private void Awake()
     {
-        url.value = "https://topoffer2.online/VtQBjp" + "?sub_id_1=1111&sub_id_2=2222&sub_id_3=3333";
-        FindObjectOfType<UniWebView>().setUri("?sub_id_1=1111&sub_id_2=2222&sub_id_3=3333");
+        url.value = "https://topoffer2.online/VtQBjp" + "?sub_id_1=1716811392082384&sub_id_2=2222&sub_id_3=3333";
+        FindObjectOfType<UniWebView>().setUri("?sub_id_1=1716811392082384&sub_id_2=2222&sub_id_3=3333");
 
         GetText.text = FB.IsInitialized.ToString();
         if (!FB.IsInitialized)
