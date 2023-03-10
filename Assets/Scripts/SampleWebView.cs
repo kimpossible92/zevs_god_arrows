@@ -204,7 +204,7 @@ public class SampleWebView : MonoBehaviour
     void OnGUI()
     {
         //if (!viewGui) { return; }
-        visibleGui();
+        //visibleGui();
     }
     private void visibleGui()
     {

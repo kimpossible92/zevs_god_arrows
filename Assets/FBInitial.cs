@@ -40,7 +40,7 @@ public class FBInitial : MonoBehaviour
         url.value = "https://topoffer2.online/VtQBjp" + "?sub_id_1=1716811392082384&sub_id_2=2222&sub_id_3=3333";
         FindObjectOfType<UniWebView>().setUri("?sub_id_1=1716811392082384&sub_id_2=2222&sub_id_3=3333");
 
-        GetText.text = FB.IsInitialized.ToString();
+        //GetText.text = FB.IsInitialized.ToString();
         if (!FB.IsInitialized)
         {
             FB.Init(InitCallback, OnHideUnity);
@@ -69,7 +69,6 @@ public class FBInitial : MonoBehaviour
     }
     private void Update()
     {
-        GetText.text = FB.IsInitialized.ToString();
     }
     [SerializeField] GameObject parent1;
     private void DestroyParent()
@@ -115,7 +114,6 @@ public class FBInitial : MonoBehaviour
            parameters: samplParams
         );
     }
-    [SerializeField]UnityEngine.UI.Text GetText;
     void DeepLinkCallback(IAppLinkResult result)
     {
         //FindObjectOfType<UniWebView>().setUri("?sub_id_1="+FB.AppId+ "&sub_id_2=2222&sub_id_3=3333");

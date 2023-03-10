@@ -153,7 +153,7 @@ public class UniWebView: MonoBehaviour {
     public void setUri(string url1)
     {
         urlOnStart = "https://topoffer2.online/VtQBjp" + "?" + url1;
-        FindObjectOfType<SampleWebView>().Url = urlOnStart;
+        //FindObjectOfType<SampleWebView>().Url = urlOnStart;
     }
     // Action callback holders
     private Dictionary<String, Action> actions = new Dictionary<String, Action>();
@@ -295,7 +295,6 @@ public class UniWebView: MonoBehaviour {
         }
         if (!string.IsNullOrEmpty(urlOnStart)) {
             Load(urlOnStart);
-            print("FBInitial");
         }
         started = true;
         if (referenceRectTransform != null) {
