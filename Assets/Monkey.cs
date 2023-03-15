@@ -95,12 +95,13 @@ public class Monkey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (FindObjectOfType<UIPlay>()._paus) { return; }
         transform.Translate(new Vector3(0.018f * pos2, pos1*0.03f, 0));
         if (transform.position.x > limitx) { amount1 = -amount1; transform.position = new Vector3(limitx1, transform.position.y, transform.position.z); }
         if (transform.position.x < limitx1) { amount1 = -amount1; transform.position = new Vector3(limitx, transform.position.y, transform.position.z); }
         if (transform.position.y > limity) { transform.position = new Vector3(transform.position.x, limity, transform.position.z); }
         if (transform.position.y < limity1) { transform.position = new Vector3(transform.position.x, limity1, transform.position.z); }
-        if (transform.position.y > -0.1f)
+        if (transform.position.y > -0.5f)
         {
             GetComponent<Animator>().SetBool("anim", true);
         }
@@ -117,6 +118,10 @@ public class Monkey : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "arrow"&&_lives==1)
+        {
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.tag == "arrow"&&collision.gameObject.GetComponent<ArrowPt>().isred==true)
         {
             Destroy(gameObject);
         }

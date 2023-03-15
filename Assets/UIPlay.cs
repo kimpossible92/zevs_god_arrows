@@ -9,6 +9,10 @@ public class UIPlay : MonoBehaviour
     [SerializeField] UnityEngine.UI.Button pause;
     [SerializeField] UnityEngine.UI.Button newgame;
     public bool setColss = false;
+    public void setVisiblenewGame()
+    {
+        newgame.gameObject.SetActive(false);
+    }
     public void setvisiblereset()
     {
         play.gameObject.SetActive(false);
@@ -38,8 +42,8 @@ public class UIPlay : MonoBehaviour
             pi.StSpawn();
         }
         if(setColss)FindObjectOfType<CollShip>().NewStart(); 
-        isInvincible = true;
-        GameObject.Find("Canvas").transform.Find("New Game").gameObject.SetActive(false); pse = false;
+        isInvincible = true; newgame.gameObject.SetActive(false);
+        pse = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -66,11 +70,26 @@ public class UIPlay : MonoBehaviour
         //        isInvincible = false;
         //    }
         //}
+        if (!pse)
+        {
+           
+        }
     }
     public void Pause1()
     {
-        Time.timeScale = 0;
-        pse = true;
+
+        if (pse)
+        {
+            Time.timeScale = 1;
+            //play.gameObject.SetActive(false);
+            newgame.gameObject.SetActive(false);
+            pse = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            pse = true;
+        }
     }
     public void Resume()
     {
@@ -115,7 +134,7 @@ public class UIPlay : MonoBehaviour
         if (setColss) FindObjectOfType<CollShip>().NewStart(); isInvincible = true;
         play.gameObject.SetActive(false);
         newgame.gameObject.SetActive(false);
-        GameObject.Find("Canvas").transform.Find("New Game").gameObject.SetActive(false);
+        //GameObject.Find("Canvas").transform.Find("New Game").gameObject.SetActive(false);
         pse = false;
     }
     public void addScore(int sc)
@@ -123,6 +142,7 @@ public class UIPlay : MonoBehaviour
         score += sc;
     }
     bool pse = false;
+    [HideInInspector]public bool _paus => pse;
     private void OnGUI()
     {
         ScoreUI();
@@ -133,9 +153,24 @@ public class UIPlay : MonoBehaviour
         else
         {
             pause.gameObject.SetActive(false);
-            play.gameObject.SetActive(true);
+            //play.gameObject.SetActive(true);
             newgame.gameObject.SetActive(true);
         }
+        var x = 10;
+        x += 40;
+        x += 40;
+        //if (pse && GUI.Button(new Rect(x, 10, 160, 160), ""))
+        //{ }
+    }
+    public void SetSActive()
+    {
+        if (FindObjectOfType<newCanvas2>() == null) { print("ret"); return; }
+        if(FindObjectOfType<newCanvas2>().Scroll1.gameObject.activeSelf)FindObjectOfType<newCanvas2>().Scroll1.gameObject.SetActive(false);
+        else { FindObjectOfType<newCanvas2>().Scroll1.gameObject.SetActive(true); }
+    }
+    public void SetSActive2()
+    {
+        FindObjectOfType<newCanvas2>().Scroll1.gameObject.SetActive(false);
     }
     void ScoreUI()
     {

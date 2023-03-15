@@ -1,38 +1,36 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class SampleButton : MonoBehaviour
-{
-    public static bool isInvincible = false;
-    public static float timeSpentInvincible;
-    // Start is called before the first frame update
-    void Start()
-    {
-        InvokeRepeating("isvisible", 5, 5);
-    }
-    private void isvisible()
-    {
-        isInvincible = true;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (isInvincible)
-        {
-            timeSpentInvincible += Time.deltaTime;
+public class SampleButton : MonoBehaviour {
 
-            if (timeSpentInvincible < 3f)
-            {
-                float remainder = timeSpentInvincible % .1f;
-                GetComponent<UnityEngine.UI.Image>().enabled = remainder > .10f;
-            }
+	public Button button;
+	public Text nameText;
+	public Text priceText;
+	public Image iconImage;
+	[SerializeField] ArrowPt GetArrowPt;
+	public ArrowPt arrowPt => GetArrowPt;
+	private Item item;
+	private SSListS scrollList;
 
-            else
-            {
-                GetComponent<UnityEngine.UI.Image>().enabled = true;
-                isInvincible = false;
-            }
-        }
-    }
+	void Start () {
+		button.onClick.AddListener(HandleClick);
+	}
+
+	public void Setup (Item currentItem, SSListS currentScrollList) {
+		item = currentItem;
+		nameText.text = item.itemName;
+		priceText.text = item.price.ToString ();
+		iconImage.sprite = item.icon;
+
+		scrollList = currentScrollList;
+	}
+
+	public void HandleClick(){
+		scrollList.TryTransferItemToOtherShop (item);
+		
+	}
+
 }

@@ -5,9 +5,11 @@ using UnityEngine;
 public class ArrowPt : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Sprite GetSprite;
     Vector2 _moveDirection;
     public bool Ismoved => _ismove;
     private bool _ismove = false;
+    public bool isred = false;
     public void setMoved1() { _ismove = true; }
     void Start()
     {

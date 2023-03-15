@@ -42,6 +42,7 @@ public class Spawners2 : MonoBehaviour
     }
     private IEnumerator Spawn()
     {
+        if (FindObjectOfType<UIPlay>()._paus) { yield return null; }
         yield return new WaitForSeconds(Random.Range(_spawnDelayRange.x, _spawnDelayRange.y));
         while (true)
         {

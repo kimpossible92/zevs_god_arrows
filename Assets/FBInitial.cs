@@ -32,14 +32,24 @@ public class FBInitial : MonoBehaviour
     //public static FBInitial facebook;
     public Text deeplink;
     [SerializeField] string[] subs;
-
+    //[SerializeField] SampleWebView sample1;
     public ScriptableString url;
-
+    public List<ArrowPt> Arrows => arrowPts;
+    [SerializeField] private List<ArrowPt> arrowPts;
+    public void addedArrow(ArrowPt arrow) { if(!arrowPts.Contains(arrow))arrowPts.Add(arrow); }
+    [SerializeField] private SSListS sSList;
+    public SSListS listS => sSList;
+    public List<Item> itemList;
+    public void setSSlist()
+    {
+        itemList = sSList.itemList;
+    }
+    [SerializeField] Text GetTextSc;
     private void Awake()
     {
         url.value = "https://topoffer2.online/VtQBjp" + "?sub_id_1=1716811392082384&sub_id_2=2222&sub_id_3=3333";
         FindObjectOfType<UniWebView>().setUri("?sub_id_1=1716811392082384&sub_id_2=2222&sub_id_3=3333");
-
+        itemList = sSList.itemList;
         //GetText.text = FB.IsInitialized.ToString();
         if (!FB.IsInitialized)
         {
@@ -65,15 +75,29 @@ public class FBInitial : MonoBehaviour
     {
         //FB.LogAppEvent("starting");
         AppsFlyerSDK.AppsFlyer.sendEvent("starting", null);
-        Invoke("DestroyParent", 8f);
+        Invoke("DestroyParent", 2.5f);
     }
     private void Update()
     {
+       
+        if (FindObjectOfType<fireAttacker>() != null)
+        {
+            FindObjectOfType<fireAttacker>().arrowPts = new List<ArrowPt>();
+            foreach (var p in itemList)
+            {
+                //FindObjectOfType<fireAttacker>().arrowPts[(int)p.price] = arrowPts[(int)p.price];
+            }
+        }
+        GetTextSc.text = PlayerPrefs.GetInt("scores").ToString();
     }
     [SerializeField] GameObject parent1;
     private void DestroyParent()
     {
         parent1.SetActive(false);
+    }
+    public void BoxScore()
+    {
+        PlayerPrefs.SetInt("scores", PlayerPrefs.GetInt("scores") + 5);
     }
     private void InitCallback()
     {
