@@ -16,11 +16,12 @@ public class AFInits : MonoBehaviour
     {
         installs.text += "device ID " + AppsFlyer.getAppsFlyerId();
         appsflyer.OnConversionDataSuccess += ConversionDataSuccessHandler;
+        //FindObjectOfType<CreateParamters>().anonymizeUser();
     }
 
     private void ConversionDataSuccessHandler(Dictionary<string, object> dictionary)
     {
         attributes.text += string.Join(", ", dictionary.Select(kv => kv.Key + "=" + kv.Value).ToArray());
-
+        print(dictionary.ToString());
     }
 }

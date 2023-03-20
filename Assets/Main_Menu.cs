@@ -14,7 +14,7 @@ public class Main_Menu : MonoBehaviour
 	public GameObject giftParticle;
 	public Image selectedKnifeImage;
 	public AudioClip giftSfx;
-
+	[SerializeField] GameObject PlayImage;
 	public static Main_Menu intance;
 
 	// Gift Setting
@@ -55,13 +55,29 @@ public class Main_Menu : MonoBehaviour
 	}
 	public void Played()
     {
-		preLoaderScript.gameObject.SetActive(true);
+		if (FindObjectOfType<CreateParamters>().iswebview == 1)
+		{
+			preLoaderScript.gameObject.SetActive(true);
+			PlayImage.gameObject.SetActive(false);
+		}
 	}
 	public void BoxScore()
     {
 		PlayerPrefs.SetInt("scores", PlayerPrefs.GetInt("scores") + 5);
     }
-	public void UpdateUI()
+    private void OnGUI()
+    {
+
+        if (PlayerPrefs.GetInt("firstopen") == 0)
+        {
+			GUI.Label(new Rect(50, 10, 80, 80), "firstopen");
+        }
+		//if (PlayerPrefs.GetInt("firstopen2") == 0)
+		//{
+		//	GUI.Label(new Rect(50, 30, 80, 80), "firstopen2");
+		//}
+	}
+    public void UpdateUI()
     {
 		selectedKnifeImageUnlock.sprite = selectedShopItem.knifeImage.sprite;
 		selectedKnifeImageLock.sprite = selectedShopItem.knifeImage.sprite;

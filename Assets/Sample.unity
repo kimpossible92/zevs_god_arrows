@@ -264,9 +264,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb516f7ac0cee4b0f8345a5a60de3f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Url: 'https://conversionleadstraffic.info/dv5RmK?sub_id_1=1111&sub_id_2=2222&sub_id_3=3333 '
+  Url: https://conversionleadstraffic.info/dv5RmK?sub_id_1=1111&sub_id_2=2222&sub_id_3=3333
   status: {fileID: 123026521}
   customFile: 0
+  texture2: {fileID: 2800000, guid: 1476870ddd76fc1448cb2d4ec17b8ed8, type: 3}
+  texture2X: {fileID: 2800000, guid: f082e69f825d0aa44b687e592731c0a8, type: 3}
+  HomeBox2X: {fileID: 2800000, guid: 4994faeacebed864588fa4fedf7108d5, type: 3}
+  autostart: 0
+  viewGui: 0
+  iscloseView: 1
 --- !u!1 &1257165921
 GameObject:
   m_ObjectHideFlags: 0

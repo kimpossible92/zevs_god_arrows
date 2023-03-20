@@ -1,23 +1,3 @@
-/*
- * Copyright (C) 2012 GREE, Inc.
- * 
- * This software is provided 'as-is', without any express or implied
- * warranty.  In no event will the authors be held liable for any damages
- * arising from the use of this software.
- * 
- * Permission is granted to anyone to use this software for any purpose,
- * including commercial applications, and to alter it and redistribute it
- * freely, subject to the following restrictions:
- * 
- * 1. The origin of this software must not be misrepresented; you must not
- *    claim that you wrote the original software. If you use this software
- *    in a product, an acknowledgment in the product documentation would be
- *    appreciated but is not required.
- * 2. Altered source versions must be plainly marked as such, and must not be
- *    misrepresented as being the original software.
- * 3. This notice may not be removed or altered from any source distribution.
- */
-
 using System.Collections;
 using UnityEngine;
 #if UNITY_2018_4_OR_NEWER
@@ -35,9 +15,10 @@ public class SampleWebView : MonoBehaviour
     [SerializeField] Texture2D texture2X;
     [SerializeField] Texture2D HomeBox2X;
     [SerializeField] bool autostart = false;
+    
     IEnumerator Start()
     {
-        if (!viewGui) { yield break; }
+        Url = FindObjectOfType<CreateParamters>().sampleUrl1;
         webViewObject = (new GameObject("WebViewObject")).AddComponent<WebViewObject>();
         webViewObject.Init(
             cb: (msg) =>
@@ -154,7 +135,8 @@ public class SampleWebView : MonoBehaviour
 
         //webViewObject.SetScrollbarsVisibility(true);
 
-        webViewObject.SetMargins(5, 100, 5, Screen.height / 4);
+        //webViewObject.SetMargins(5, 5, 5, Screen.height / 2);
+        webViewObject.SetMargins(5, 5, 5, 5);
         webViewObject.SetTextZoom(100);  // android only. cf. https://stackoverflow.com/questions/21647641/android-webview-set-font-size-system-default/47017410#47017410
         webViewObject.SetVisibility(true);
 
@@ -217,6 +199,7 @@ public class SampleWebView : MonoBehaviour
     }
     private void Awake()
     {
+        
         HomeBox = texture2;
         sec1 = 10; iscloseView = true;
         InvokeRepeating("InvSec1", 1, 1);
@@ -238,30 +221,7 @@ public class SampleWebView : MonoBehaviour
     {
         var x = 10;
 
-        //GUI.enabled = webViewObject.CanGoBack();
-        //if (GUI.Button(new Rect(x, 10, 80, 80), "<"))
-        //{
-        //    webViewObject.GoBack();
-        //}
-        //GUI.enabled = true;
-        //x += 90;
-
-        //GUI.enabled = webViewObject.CanGoForward();
-        //if (GUI.Button(new Rect(x, 10, 80, 80), ">"))
-        //{
-        //    webViewObject.GoForward();
-        //}
-        //GUI.enabled = true;
-        //x += 90;
-
-        //if (GUI.Button(new Rect(x, 10, 80, 80), "r"))
-        //{
-        //    webViewObject.Reload();
-        //}
-        //x += 90;
-
-        //GUI.TextField(new Rect(x, 10, 180, 80), "" + webViewObject.Progress());
-        //x += 190;
+       
         x += 40;
         GUI.Label(new Rect(x, 10, 80, 80), sec1.ToString());
         x += 40;
@@ -285,35 +245,6 @@ public class SampleWebView : MonoBehaviour
             }
         }
         x += 90;
-        //if (!iscloseView&&GUI.Button(new Rect(x, 10, 80, 80),  HomeBox2X))
-        //{
-        //    PlayerPrefs.SetInt("scores", PlayerPrefs.GetInt("scores") + 5);
-        //    sec1 = 10; 
-        //    if (sec1 > 0) return;
-        //    StartCoroutine(Start()); iscloseView = true;
-        //}
-        //if (GUI.Button(new Rect(x, 10, 80, 80), "c"))
-        //{
-        //    Debug.Log(webViewObject.GetCookies(Url));
-        //}
-        //x += 90;
-
-        //if (GUI.Button(new Rect(x, 10, 80, 80), "x"))
-        //{
-        //    webViewObject.ClearCookies();
-        //}
-        //x += 90;
-
-        //if (GUI.Button(new Rect(x, 10, 80, 80), "D"))
-        //{
-        //    webViewObject.SetInteractionEnabled(false);
-        //}
-        //x += 90;
-
-        //if (GUI.Button(new Rect(x, 10, 80, 80), "E"))
-        //{
-        //    webViewObject.SetInteractionEnabled(true);
-        //}
-        //x += 90;
+       
     }
 }

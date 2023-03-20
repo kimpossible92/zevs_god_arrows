@@ -35,6 +35,7 @@ public class AppsFlyerObjectScript : MonoBehaviour , IAppsFlyerConversionData
         AppsFlyer.AFLog("didReceiveConversionData", conversionData);
         Dictionary<string, object> conversionDataDictionary = AppsFlyer.CallbackStringToDictionary(conversionData);
         OnConversionDataSuccess?.Invoke(conversionDataDictionary);
+       
         // add deferred deeplink logic here
     }
 
